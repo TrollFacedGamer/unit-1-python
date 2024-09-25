@@ -5,7 +5,7 @@ Write a program to print each character of a given string using a for loop.
 
 #ask user for a string
 given_string = input("give_a_string")
-#repeat for each character in a string
+#repeat for each character
 for x in given_string:
     #print each charater
     print(x)
@@ -17,7 +17,7 @@ Write a program to calculate the sum of elements in a list using a for loop.
 
 #create list of numbers
 given_list = [0, 1, 2, 3, 4]
-#create variable to store the result
+#variable to store the result
 result = 0
 #
 for x in given_list:
@@ -30,11 +30,11 @@ Exercise 3:
 Write a program to print the length of each word in a sentence using a for loop and a list.
 """
 
-#create a variable that sores a sentence
+#variable to stores a sentence
 sentence = "Hello nice to meet you"
-#turn the sentence into a list
+#turn sentence into a list
 split_sentence = sentence.split(" ")
-#iterate for each string in list
+#iterate for each string
 for x in split_sentence:
     #print the lenght of string
     print(len(x))
@@ -48,7 +48,7 @@ In a comment, answer the following, what do you notice about the output of your 
 Is it what you expected?
 """
 
-#create a dictionary with 4 keywords and values
+#create a dictionary
 four_value_dictionary = {
     "wang":"benny",
     "appleseed": "johnny",
@@ -56,9 +56,9 @@ four_value_dictionary = {
     "lin": "andy"
 }
 
-#iterate each keyword and value set
+#iterate each keyword/ value
 for x in four_value_dictionary:
-    #print the keyword of the iterated set
+    #print the keyword
     print(x)
 
 #I notice that the output of my code is just the key words of the dictionary. 
