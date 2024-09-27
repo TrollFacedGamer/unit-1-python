@@ -1,2 +1,67 @@
-current_todo = []
+#to do list
+current_todo = ["drink water", "sleep", "clean turtle", "do HW"]
 
+#counter
+num = 1
+
+#list out todo
+print("your current to do are:")
+
+for x in current_todo:
+    print(f"{num}. {x}")
+    num += 1
+
+#reset counter
+num = 1
+
+#stop counter
+stop = False
+
+#repeat tilll user say otherwise
+while stop == False:
+    #ask add or remove
+    action = input("would you like to add or remove a todo? (add/remove/help/save/stop)").lower()
+
+    if action == "add":
+        
+        #add to list
+        current_todo.append(input("what would you like to add?"))
+        
+        print("your current to do are:")
+
+        #list out todo
+        print("your current to do are:")
+
+        for x in current_todo:
+            print(f"{num}. {x}")
+            num += 1
+
+        #reset counter
+        num  = 1
+    elif action == "remove":
+        #remove from list
+        current_todo.pop(int(input("which # todo would you like to remove?")) - 1)
+
+        #list out todo
+        print("your current to do are:")
+
+        for x in current_todo:
+            print(f"{num}. {x}")
+            num += 1
+
+        #reset counter
+        num  = 1
+
+    else:
+        print("error: you can only enter add or remove")
+    
+    #ask if want stop
+    stop_input = input("would you like to stop?").lower
+
+    #change stop true
+    if stop_input == "yes":
+        stop = True
+ 
+    #change stop false
+    elif stop_input == "no":
+        stop = False
