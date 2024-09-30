@@ -1,65 +1,78 @@
 #variables
 stop = False
-current_todo = ["",]
+current_todo = []
+remove_list_item = ""
+num_of_item_in_list = []
+
+#Welcome
+print("Welcome to Benny's TODO tracker")
+print("")
 
 #read storage.txt and turn list
-with open("storage.txt", "r") as storage:
-    current_todo = storage.read().split("_")
+with open("projects/storage.txt", "r") as storage:
+    current_todo = storage.readlines()
 
 #list out todo
 def print_todo():
     print("your current to do are:")
-    if current_todo == [""] or current_todo == []:
+    if current_todo == []:
         print("you have no tasks")
-        print("")
     else:
         for x in current_todo:
+            #print
             print(f"{current_todo.index(x) + 1}. {x}")
-            print("")
+    print("")
 print_todo()
 
 #repeat tilll user say otherwise
 while stop == False:
     #ask for action
     action = input("would you like to do? (add/remove/save/stop/reset/help).").lower()
+    print("")
 
     #add
     if action == "add":
         #ask
         add_input = input("what would you like to add?")
-        #check if empty
-        if add_input.isspace() or add_input in current_todo or add_input == "" or "_" in add_input:
-            print("error: you can not add a todo that is empty or contain _ or aready in the todo list")
+        #check if input vaild
+        if add_input.isspace():
+            print("error: you can not just enter spaces")
             print("")
+        elif add_input == "":
+            print("error: you can not add a todo that is empty.")
+            print("")
+        elif "_" in add_input:
+            print("error: you can not use _.")
+            print("")
+        #not work idk
+        #elif (add_input in current_todo):
+        #    print("error: you can not add a prexisting todo task.")
+        #    print("")
         else:
-        #add to list
-            if current_todo == [""]:
-                current_todo[0] = add_input
-            else:
-                current_todo.append(add_input)
+            current_todo.append(add_input + "\n")
 
         print_todo()
 
     #remove
     elif action == "remove":
+        #ask for existing list number
+        remove_list_item = input("which # todo would you like to remove?")
+        # while ((int(remove_list_item) <= len(num_of_item_in_list)) == False) or (int(remove_list_item) < 0):
+        #     remove_list_item = input("which # todo would you like to remove?")
+        #     if remove_list_item in num_of_item_in_list != True:
+        #         print("error: item not in list")
+        #         print("")
+        
         #remove from list
-        current_todo.pop(int(input("which # todo would you like to remove?")) - 1)
+        del current_todo[remove_list_item - 1]
 
         print_todo()
     
     #save
     elif action == "save":
-        #convert list to string
-        list_to_string = ""
-        for x in current_todo:
-            if current_todo.index(x) == len(current_todo) - 1:
-                list_to_string += x
-            else:
-                list_to_string += f"{x}_"
-
         #save list_to_string in storage.txt
-        with open("storage.txt", "w") as storage:
-            storage.write(list_to_string)
+        with open("projects/storage.txt", "w") as storage:
+            storage.writelines(current_todo)
 
     #stop
     elif action == "stop":
@@ -68,8 +81,8 @@ while stop == False:
     #reset
     elif action == "reset":
         #read storage.txt and turn list
-        with open("storage.txt", "r") as storage:
-            current_todo = storage.read().split("_")
+        with open("projects/storage.txt", "r") as storage:
+            current_todo = storage.readlines()
         
         print_todo()
 
