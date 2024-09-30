@@ -1,67 +1,101 @@
-#to do list
-current_todo = ["drink water", "sleep", "clean turtle", "do HW"]
+#variables
+stop = False
+current_todo = ["",]
 
-#counter
-num = 1
+#read storage.txt and turn list
+with open("storage.txt", "r") as storage:
+    current_todo = storage.read().split("_")
 
 #list out todo
-print("your current to do are:")
-
-for x in current_todo:
-    print(f"{num}. {x}")
-    num += 1
-
-#reset counter
-num = 1
-
-#stop counter
-stop = False
+def print_todo():
+    print("your current to do are:")
+    if current_todo == [""] or current_todo == []:
+        print("you have no tasks")
+        print("")
+    else:
+        for x in current_todo:
+            print(f"{current_todo.index(x) + 1}. {x}")
+            print("")
+print_todo()
 
 #repeat tilll user say otherwise
 while stop == False:
-    #ask add or remove
-    action = input("would you like to add or remove a todo? (add/remove/help/save/stop)").lower()
+    #ask for action
+    action = input("would you like to do? (add/remove/save/stop/reset/help).").lower()
 
+    #add
     if action == "add":
-        
+        #ask
+        add_input = input("what would you like to add?")
+        #check if empty
+        if add_input.isspace() or add_input in current_todo or add_input == "" or "_" in add_input:
+            print("error: you can not add a todo that is empty or contain _ or aready in the todo list")
+            print("")
+        else:
         #add to list
-        current_todo.append(input("what would you like to add?"))
-        
-        print("your current to do are:")
+            if current_todo == [""]:
+                current_todo[0] = add_input
+            else:
+                current_todo.append(add_input)
 
-        #list out todo
-        print("your current to do are:")
+        print_todo()
 
-        for x in current_todo:
-            print(f"{num}. {x}")
-            num += 1
-
-        #reset counter
-        num  = 1
+    #remove
     elif action == "remove":
         #remove from list
         current_todo.pop(int(input("which # todo would you like to remove?")) - 1)
 
-        #list out todo
-        print("your current to do are:")
-
-        for x in current_todo:
-            print(f"{num}. {x}")
-            num += 1
-
-        #reset counter
-        num  = 1
-
-    else:
-        print("error: you can only enter add or remove")
+        print_todo()
     
-    #ask if want stop
-    stop_input = input("would you like to stop?").lower
+    #save
+    elif action == "save":
+        #convert list to string
+        list_to_string = ""
+        for x in current_todo:
+            if current_todo.index(x) == len(current_todo) - 1:
+                list_to_string += x
+            else:
+                list_to_string += f"{x}_"
 
-    #change stop true
-    if stop_input == "yes":
+        #save list_to_string in storage.txt
+        with open("storage.txt", "w") as storage:
+            storage.write(list_to_string)
+
+    #stop
+    elif action == "stop":
         stop = True
- 
-    #change stop false
-    elif stop_input == "no":
-        stop = False
+
+    #reset
+    elif action == "reset":
+        #read storage.txt and turn list
+        with open("storage.txt", "r") as storage:
+            current_todo = storage.read().split("_")
+        
+        print_todo()
+
+    #help
+    elif action == "help":
+        #add
+        print("add: type in a todo and press enter to add an new todo to the todo list.")
+        print("")
+        #remove
+        print("remove: type in the corresonding number of a item on the todo list to remove it.")
+        print("")
+        #save
+        print("save: save your current todo list. Note: will not stop the program.")
+        print("")
+        #stop
+        print("stop: will cause the todo list program to stop running. Note: will not save current list.")
+        print("")
+        #reset
+        print("reset: will delete current todo list and replace it with the newest save")
+        print("")
+        #help
+        print("display explanation for all commands.")
+        print("")
+
+    #inform user of error
+    else:
+        print("error: you can only enter add or remove or save or stop or reset or help.")
+        print("Note: do not add space at the front or end")
+        print("")
