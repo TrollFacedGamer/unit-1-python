@@ -6,12 +6,16 @@ parameter and prints a greeting message like "Hello, [name]!".
 
 #define function with hello parameter
 def hello_name(name):
-    
+    '''takes a parameter
+        Print sentence.
+    '''
+
     #print Hello with variable name
     print(f"Hello, {name}")
 
 #ask user for name
 hello_name(input("What is you name?"))
+print(hello_name.__doc__)
 
 """
 Task 2: Square of a Number
@@ -23,12 +27,16 @@ from math import sqrt
 
 #define function with num argument
 def square(num):
+    '''takes a parameter(number)
+        Return a sqrt.
+    '''
 
     #return sqrt of num
     return(sqrt(num))
 
 #ask user for integer
-square(int(input("Give a integer.")))
+print(square(9))
+print(square.__doc__)
 
 
 """
@@ -39,12 +47,18 @@ returns `True` if the number is even, and `False` otherwise.
 
 #define function with number argument
 def even_odd(number):
+    '''take a parameter(number)
+        Determine if even
+        Return True/False.
+    '''
 
     #return if num has remainder with 2
     return(number % 2 == 0)
 
 #ask user for number
 even_odd(int(input("Give a number.")))
+print(even_odd.__doc__)
+
 
 """
 Task 4: Area of a Rectangle
@@ -53,12 +67,16 @@ Write a function that takes the length and width of a rectangle and returns its 
 
 #define function with lenght&width argument
 def area_of_rectangle(lenght, width):
+    '''takes 2 parameters(lenght & width)
+        Return area.
+    '''
     
     #return product of arugments
     return(int(lenght) * int(width))
 
 #ask user for lenght and width
-area_of_rectangle(input("Give lenght"),input("Give width."))
+print(area_of_rectangle(5,5))
+print(area_of_rectangle.__doc__)
 
 """
 Task 5: Celsius to Fahrenheit
@@ -68,12 +86,16 @@ the equivalent temperature in Fahrenheit using the correct formula
 
 #define function with celsius argument
 def celsius_to_fehrenheit(celsius):
+    '''takes a parameter(celsius)
+        Return fehrenheit.
+    '''
     
     #return the product of equation
     return((int(celsius) * (9/5)) + 32)
 
 #ask user for celsius
-celsius_to_fehrenheit(input("Give a celsius"))
+print(celsius_to_fehrenheit(32))
+print(area_of_rectangle.__doc__)
 
 """
 Task 6: Average of Numbers
@@ -83,6 +105,10 @@ and returns the average (mean) of those numbers.
 
 #define function with list_of_num arugment
 def mean(list_of_num):
+    '''take a parameters(list of numbers)
+        Return mean
+    '''
+
     #define counter
     average = 0
     #add up all the numbers
@@ -93,7 +119,8 @@ def mean(list_of_num):
     return(average / len(list_of_num))
 
 #call function with list
-mean([5, 10, 15, 20, 25])
+print(mean([5, 10, 15, 20, 25]))
+print(mean.__doc__)
 
 
 """
@@ -104,6 +131,10 @@ Your function should also optionally accept a 3rd argument for discount, and ret
 
 #define function with 3 arguments
 def total_calculator(price, quantity, discount):
+    '''take parameters(price, quantity, discount)
+        Determine if discount = 0
+        Return price or price, discount, discounted price
+    '''
     
     #check if there's a discount
     if discount == 0:
@@ -115,3 +146,4 @@ def total_calculator(price, quantity, discount):
 
 #call function with 3 inputs
 total_calculator(12, 2, 0.5)
+print(total_calculator.__doc__)
