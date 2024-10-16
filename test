@@ -1,12 +1,14 @@
-def gcd(a, b):
-    result = min(a, b)  # Find Minimum of a and b
-    while result > 0:
-        if a % result != 0 or b % result != 0:
-            break
-        result -= 1
-    return result  # return gcd of a and b
+# def gcd(a, b):
+#     result = min(a, b)  # Find Minimum of a and b
+#     while result > 0:
+#         if a % result != 0 or b % result != 0:
+#             break
+#         result -= 1
+#     return result  # return gcd of a and b
 
-# Driver program to test above function
-if __name__ == "__main__":
-    a, b = 98, 56
-    print(f"GCD of {a} and {b} is {gcd(a, b)}")
+# # Driver program to test above function
+# if __name__ == "__main__":
+#     a, b = 98, 56
+#     print(f"GCD of {a} and {b} is {gcd(a, b)}")
+
+print("ab" * 12)
